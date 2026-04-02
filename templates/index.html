@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LS IMPORTS</title>
+
+    <script>
+        function mostrarOpcoes() {
+            var produto = document.getElementById("produto").value;
+
+            document.getElementById("camisa_opcoes").style.display = "none";
+            document.getElementById("chuteira_opcoes").style.display = "none";
+
+            if (produto == "camisa") {
+                document.getElementById("camisa_opcoes").style.display = "block";
+            }
+
+            if (produto == "chuteira") {
+                document.getElementById("chuteira_opcoes").style.display = "block";
+            }
+        }
+
+        function mostrarPersonalizacao() {
+            var tipo = document.getElementById("tipo_camisa").value;
+
+            if (tipo == "personalizada") {
+                document.getElementById("personalizado").style.display = "block";
+            } else {
+                document.getElementById("personalizado").style.display = "none";
+            }
+        }
+    </script>
+
+</head>
+
+<body style="font-family: Arial; text-align:center; background:#0b1a2b; color:white;">
+
+<h1>LS IMPORTS</h1>
+
+<form action="/enviar" method="post" enctype="multipart/form-data" style="background:white; color:black; padding:20px; width:300px; margin:auto; border-radius:10px;">
+
+<h3>Dados</h3>
+
+<input name="nome" placeholder="Nome completo" required><br><br>
+<input name="email" placeholder="E-mail" required><br><br>
+<input name="telefone" placeholder="Telefone" required><br><br>
+<input name="endereco" placeholder="Endereço completo" required><br><br>
+<input name="cep" placeholder="CEP" required><br><br>
+
+<h3>Produto</h3>
+
+<select name="produto" id="produto" onchange="mostrarOpcoes()" required>
+<option value="">Selecione</option>
+<option value="camisa">Camisa</option>
+<option value="chuteira">Chuteira</option>
+</select>
+
+<br><br>
+
+<div id="camisa_opcoes" style="display:none;">
+    <select name="tipo_camisa" id="tipo_camisa" onchange="mostrarPersonalizacao()">
+        <option value="sem">Sem personalização</option>
+        <option value="personalizada">Com personalização</option>
+    </select>
+
+    <div id="personalizado" style="display:none;">
+        <input name="nome_personalizado" placeholder="Nome na camisa"><br><br>
+        <input name="numero_personalizado" placeholder="Número"><br><br>
+    </div>
+</div>
+
+<div id="chuteira_opcoes" style="display:none;">
+    <select name="tamanho_chuteira">
+        <option value="">Tamanho</option>
+        <option>38</option>
+        <option>39</option>
+        <option>40</option>
+        <option>41</option>
+        <option>42</option>
+        <option>43</option>
+    </select>
+</div>
+
+<br>
+
+<h3>Print do produto</h3>
+<input type="file" name="print" required><br><br>
+
+<button type="submit">Enviar Pedido</button>
+
+</form>
+
+</body>
+</html>
